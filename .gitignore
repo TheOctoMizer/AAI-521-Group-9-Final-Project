@@ -8,3 +8,18 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Dataset
+datasets
+lmdb_final
+patches
+checkpoints
+**/*.json
+results
+experiments
+
+**/*.pdf
+**/*.gif
+
+
+.DS_Store
