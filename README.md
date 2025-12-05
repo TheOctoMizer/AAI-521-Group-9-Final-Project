@@ -4,10 +4,15 @@
 This project focuses on restoring old and damaged photographs using deep learning techniques. The system can handle various types of degradation commonly found in old photos, including noise, blur, scratches, fading, and color shifts.
 
 ## Features
-- **Image Degradation Simulation**: Realistic simulation of old photo degradation
-- **Multiple Restoration Models**: Specialized models for different restoration tasks
-- **High-Quality Results**: State-of-the-art deep learning models for superior restoration quality
-- **Easy to Use**: Simple interface for processing images
+- **Image Restoration**: Four specialized deep learning models for different restoration tasks
+- **Multiple Restoration Types**:
+  - **Super Resolution**: Enhance image resolution (2x upscaling)
+  - **Denoising**: Remove noise and grain from images
+  - **Colorization**: Add realistic colors to grayscale photos
+  - **Inpainting**: Fill in missing or damaged areas
+- **Interactive UI**: Intuitive web interface built with Streamlit
+- **Preview Controls**: Adjust preview size and processing resolution
+- **Cross-Platform**: Works on CPU, GPU, and Apple Silicon (MPS)
 
 ## Project Structure
 ```
@@ -33,7 +38,36 @@ This project focuses on restoring old and damaged photographs using deep learnin
    pip install -e .
    ```
 
-## Usage
+## Web App Usage
+
+### Launching the App
+
+1. Install the required dependencies:
+   ```bash
+   pip install -r app/requirements.txt
+   ```
+
+2. Start the Streamlit app:
+   ```bash
+   streamlit run app/app.py
+   ```
+
+3. Open your browser and navigate to the URL shown in the terminal (typically http://localhost:8501)
+
+### How to Use
+
+1. **Select a Task**: Choose from Super Resolution, Denoising, Colorization, or Inpainting
+2. **Upload an Image**: Use the file uploader to select an image from your computer
+3. **Adjust Settings**:
+   - *Max preview size*: Control the resolution for processing
+   - *Preview width*: Adjust the display size of images in the UI
+   - *Device*: Toggle between CPU/GPU if available
+4. **For Inpainting**: Upload a mask image where black areas indicate regions to be filled
+5. Click **Run Model** to process the image
+6. Download the result using the download button
+
+### Command Line Training (Optional)
+
 1. **Data Preparation**:
    - Place your training images in the `datasets/` directory
    - Run the data preprocessing script:
@@ -45,10 +79,6 @@ This project focuses on restoring old and damaged photographs using deep learnin
    - Open and run the `train_models.ipynb` notebook
    - Or run training from the command line
 
-3. **Inference**:
-   - Use the provided models in the `checkpoints/` directory
-   - Example usage coming soon
-
 ## Models
 - **Denoising**: Removes noise and grain
 - **Colorization**: Adds realistic colors to grayscale images
@@ -59,15 +89,33 @@ This project focuses on restoring old and damaged photographs using deep learnin
 Check the `results/` directory for sample outputs and comparisons.
 
 ## Dependencies
+
+### Core Dependencies
 - Python 3.12+
 - PyTorch
 - OpenCV
 - NumPy
+- Pillow
+- Streamlit
+
+### Optional (for training)
 - Matplotlib
 - Jupyter Notebook
 - tqdm
 - h5py
 - lmdb
+
+### Installation
+
+For just running the app:
+```bash
+pip install torch torchvision opencv-python numpy pillow streamlit
+```
+
+For development and training:
+```bash
+pip install -e .
+```
 
 ## Team
 - Chyavan Shenoy
