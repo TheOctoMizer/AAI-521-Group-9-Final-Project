@@ -22,3 +22,7 @@ experiments
 **/*.gif
 
 .DS_Store
+
+
+
+**/*.pt*
